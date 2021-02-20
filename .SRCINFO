@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rqt-gui
 	pkgdesc = ROS - rqt_gui provides the main to start an instance of the ROS integrated graphical user interface provided by qt_gui.
 	pkgver = 0.5.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/rqt_gui
 	arch = any
 	license = BSD
@@ -11,9 +11,9 @@ pkgbase = ros-noetic-rqt-gui
 	makedepends = ros-noetic-catkin
 	depends = ros-noetic-qt-gui
 	depends = ros-noetic-catkin
-	source = python39.patch
+	source = 241.patch::https://github.com/ros-visualization/rqt/pull/241.patch
 	source = ros-noetic-rqt-gui-0.5.2.tar.gz::https://github.com/ros-visualization/rqt/archive/0.5.2.tar.gz
-	sha256sums = 2d5364633ed6d009355c45eab8ab6042b2d9d9ceaa9896f54db13f2045ef3ad1
+	sha256sums = ba6a6a30fc27d02ee403c92c1d9735c0be6b8aaf8d216d5b625910960da60b87
 	sha256sums = 9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb
 
 pkgname = ros-noetic-rqt-gui
