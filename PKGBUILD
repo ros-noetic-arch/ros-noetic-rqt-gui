@@ -5,9 +5,8 @@ url='https://wiki.ros.org/rqt_gui'
 
 pkgname='ros-noetic-rqt-gui'
 pkgver='0.5.2'
-_pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -31,8 +30,20 @@ depends=(
 )
 
 _dir="rqt-${pkgver}/rqt_gui"
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz")
-sha256sums=('9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb')
+source=(
+	python39.patch
+	"${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz"
+)
+
+sha256sums=(
+	'2d5364633ed6d009355c45eab8ab6042b2d9d9ceaa9896f54db13f2045ef3ad1'
+	'9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb'
+)
+
+prepare() {
+    cd "rqt-$pkgver"
+    patch --forward --strip=1 --input="${srcdir}/python39.patch"
+}
 
 build() {
 	# Use ROS environment variables.
