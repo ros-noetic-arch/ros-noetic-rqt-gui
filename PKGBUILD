@@ -6,7 +6,7 @@ url='https://wiki.ros.org/rqt_gui'
 pkgname='ros-noetic-rqt-gui'
 pkgver='0.5.2'
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -30,19 +30,15 @@ depends=(
 )
 
 _dir="rqt-${pkgver}/rqt_gui"
-source=(
-	"241.patch"::"https://github.com/ros-visualization/rqt/pull/241.patch"
-	"${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz"
-)
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz"
+        "241.patch"::"https://github.com/ros-visualization/rqt/pull/241.patch")
 
-sha256sums=(
-	'ba6a6a30fc27d02ee403c92c1d9735c0be6b8aaf8d216d5b625910960da60b87'
-	'9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb'
-)
+sha256sums=('9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb'
+            'ba6a6a30fc27d02ee403c92c1d9735c0be6b8aaf8d216d5b625910960da60b87')
 
 prepare() {
     cd "rqt-$pkgver"
-    patch --forward --strip=1 --input="${srcdir}/python39.patch"
+    patch --forward --strip=1 --input="${srcdir}/241.patch"
 }
 
 build() {
